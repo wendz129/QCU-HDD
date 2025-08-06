@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Diagnostic Test</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>  
+        <div class="container">
+            <h1>Diagnostic Test</h1>
+            <form id="diagnosticForm">
+                <div class="question">
+                    <p>1. Is your computer making unusual noises?</p>
+                    <label><input type="radio" name="question1" value="yes"> Yes</label>
+                    <label><input type="radio" name="question1" value="no"> No</label>
+                    </div>
+                    <div class="question">
+                        <p>2. Are you experiencing frequent software crashes?</p>
+                        <label><input type="radio" name="q1" value="yes"> Yes</label>
+                        <label><input type="radio" name="q1" value="yes"> No</label>
+                    </div>
+                    <div class="question">
+                        <p>2. Are you experiencing frequent software crashes?</p>
+                        <label><input type="radio" name="q2" value="yes"> Yes</label>
+                        <label></label><input type="radio" name="q2" value="no"> No</label>
+                </div>
+                <!-- Add more questions as needed -->
+                 <button type="submit">Submit Test</button>
+                 </form>
+                 <div id="result"></div>
+            </div>
+            <script src="script.js"></script>
+    </body>
+</html>

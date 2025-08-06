@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Personality Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .question { margin-bottom: 20px; }
+    .result { margin-top: 30px; font-weight: bold; }
+    button { padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Sample Personality Test</h1>
+  <form id="testForm">
+    <div class="question">
+      <p>1. How do you usually react when faced with a difficult problem?</p>
+      <label><input type="radio" name="q1" value="A" required> A. Try to solve it myself before asking for help.</label><br>
+      <label><input type="radio" name="q1" value="B"> B. Immediately seek advice from others.</label><br>
+      <label><input type="radio" name="q1" value="C"> C. Avoid dealing with it for as long as possible.</label><br>
+      <label><input type="radio" name="q1" value="D"> D. Break it down into smaller parts and tackle each part.</label>
+    </div>
+    <div class="question">
+      <p>2. When working in a group, what role do you naturally take?</p>
+      <label><input type="radio" name="q2" value="A" required> A. The leader who organizes and directs.</label><br>
+      <label><input type="radio" name="q2" value="B"> B. The supporter who helps wherever needed.</label><br>
+      <label><input type="radio" name="q2" value="C"> C. The creative who comes up with new ideas.</label><br>
+      <label><input type="radio" name="q2" value="D"> D. The observer who listens and analyzes.</label>
+    </div>
+    <div class="question">
+      <p>3. Which of the following best describes how you handle stress?</p>
+      <label><input type="radio" name="q3" value="A" required> A. I become anxious and worry a lot.</label><br>
+      <label><input type="radio" name="q3" value="B"> B. I stay calm and look for solutions.</label><br>
+      <label><input type="radio" name="q3" value="C"> C. I distract myself with other activities.</label><br>
+      <label><input type="radio" name="q3" value="D"> D. I talk to friends or family about my feelings.</label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result" class="result"></div>
+
+  <script>
+    const personalityProfiles = {
+      AAA: "You are independent and analytical. You prefer to handle challenges yourself and often take charge in group settings, but may need to work on managing stress.",
+      BBB: "You are supportive, calm, and work well in teams. You value harmony and tend to maintain composure under stress.",
+      CCC: "You are creative and adaptable, handling problems and stress in unique ways, but may sometimes avoid direct confrontation.",
+      DDD: "You are methodical and thoughtful, preferring to break down problems and analyze situations carefully.",
+      // Add more combinations as needed for demonstration
+    };
+
+    document.getElementById('testForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const q1 = document.querySelector('input[name="q1"]:checked').value;
+      const q2 = document.querySelector('input[name="q2"]:checked').value;
+      const q3 = document.querySelector('input[name="q3"]:checked').value;
+      const key = q1 + q2 + q3;
+
+      // Simple example: Show one of the sample results, or a default
+      let result = personalityProfiles[key] || "You have a balanced personality with diverse approaches to challenges.";
+      document.getElementById('result').textContent = "Result: " + result;
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personality Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    #container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      max-width: 400px;
+      width: 100%;
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .answers label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    button {
+      background: #2d7ff9;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.2em;
+      color: #2d7ff9;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Personality Test</h2>
+    <form id="quiz-form">
+      <div id="quiz"></div>
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    const questions = [
+      {
+        text: "You’re going to a party. You:",
+        options: [
+          { text: "Can’t wait to meet new people", type: "extrovert" },
+          { text: "Stick with people you know", type: "introvert" }
+        ]
+      },
+      {
+        text: "When working on a project, you prefer:",
+        options: [
+          { text: "Collaborating with others", type: "extrovert" },
+          { text: "Working alone", type: "introvert" }
+        ]
+      },
+      {
+        text: "In your free time, you like to:",
+        options: [
+          { text: "Go out and do something active", type: "extrovert" },
+          { text: "Stay in and read or watch a movie", type: "introvert" }
+        ]
+      }
+    ];
+
+    const quizDiv = document.getElementById('quiz');
+    const resultDiv = document.getElementById('result');
+    const form = document.getElementById('quiz-form');
+
+    // Render quiz questions
+    questions.forEach((q, i) => {
+      const qDiv = document.createElement('div');
+      qDiv.className = "question";
+      qDiv.innerHTML = `<p>${q.text}</p>`;
+      const ansDiv = document.createElement('div');
+      ansDiv.className = "answers";
+      q.options.forEach((opt, j) => {
+        const id = `q${i}_opt${j}`;
+        ansDiv.innerHTML += `
+          <label>
+            <input type="radio" name="q${i}" value="${opt.type}" required>
+            ${opt.text}
+          </label>
+        `;
+      });
+      qDiv.appendChild(ansDiv);
+      quizDiv.appendChild(qDiv);
+    });
+
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      let counts = { introvert: 0, extrovert: 0 };
+      questions.forEach((q, i) => {
+        const val = form[`q${i}`].value;
+        counts[val]++;
+      });
+      let result;
+      if (counts.extrovert > counts.introvert) {
+        result = "You are an Extrovert!";
+      } else if (counts.introvert > counts.extrovert) {
+        result = "You are an Introvert!";
+      } else {
+        result = "You have a balanced personality!";
+      }
+      resultDiv.textContent = result;
+      form.style.display = 'none';
+    }
+  </script>
+</body>
+</html> -->
