@@ -17,3 +17,15 @@ console.log(`coddy = "${coddy}"`);
 console.log(`backup = "${backup}"`)
 console.log(`tank = "${tank}"`)
 console.log(`air= "${air}"`)
+/**
+ * If you need to store a person's full name in a variable, which data type would be most suitable?
+
+1
+array
+2
+number
+3
+char
+4
+string
+ */
